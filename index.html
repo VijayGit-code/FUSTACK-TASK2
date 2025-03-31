@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            width: 350px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: cyan;
+            text-shadow: 0px 0px 15px cyan;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        input:focus {
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: cyan;
+            color: black;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Registration</h1>
+        <form action="/submit" method="post" onsubmit="return validateForm()">
+            <label>Name:</label>
+            <input type="text" name="name" id="name" required />
+
+            <label>Mobile:</label>
+            <input type="text" name="mobile" id="mobile" required />
+
+            <label>Email:</label>
+            <input type="email" name="email" id="email" required />
+
+            <label>Password:</label>
+            <input type="password" name="password" id="password" required />
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (name === "" || mobile === "" || email === "" || password === "") {
+                alert("All fields are required!");
+                return false;
+            }
+
+            if (mobile.length !== 10 || isNaN(mobile)) {
+                alert("Invalid mobile number!");
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long!");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+     
+
